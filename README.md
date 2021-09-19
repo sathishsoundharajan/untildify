@@ -11,8 +11,8 @@ fn main() {
   // prints /Users/<user_name>/Desktop
   
   // Other Examples
-  // assert_eq!(untildify("~/a/b/c/d/e"), "/User/Untildify/a/b/c/d/e");
-  // assert_eq!(untildify("~/"), "/User/Untildify/");
+  assert_eq!(untildify("~/a/b/c/d/e"), "/User/Untildify/a/b/c/d/e");
+  assert_eq!(untildify("~/"), "/User/Untildify/");
 }
 
 ```
