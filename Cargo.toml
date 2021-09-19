@@ -9,7 +9,7 @@ authors = ["sathishsoundharajan <sathishwelcomez@ymail.com>"]
 categories = ["development-tools"]
 homepage = "https://github.com/sathishsoundharajan/untildify"
 repository = "https://github.com/sathishsoundharajan/untildify"
-keywords = ["tilde", "untildify", "~", "utility"]
+keywords = ["tilde", "untildify", "utility"]
 documentation = "https://docs.rs/untildify"
 
 [badges.maintenance]
