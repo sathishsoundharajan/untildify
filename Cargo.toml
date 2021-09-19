@@ -1,0 +1,18 @@
+[package]
+name = "untildify"
+version = "0.1.0"
+edition = "2018"
+license = "MIT"
+readme = "README.md"
+authors = ["sathishsoundharajan <sathishwelcomez@ymail.com>"]
+categories = ["development-tools"]
+homepage = "https://github.com/sathishsoundharajan/untildify"
+repository = "https://github.com/sathishsoundharajan/untildify"
+keywords = ["tilde", "untildify", "~", "utility"]
+documentation = "https://docs.rs/untildify"
+
+[badges.maintenance]
+status = "actively-developed"
+
+[dependencies]
+regex = "1.5.4"
