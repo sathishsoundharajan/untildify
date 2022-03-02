@@ -3,12 +3,12 @@ use std::env;
 use std::path::PathBuf;
 
 /// Convert a tilde path to an absolute path: ~/Desktop → /Users/sathish/Desktop
-/// 
+///
 /// Example
-/// 
+///
 /// ```
 /// use untildify::untildify;
-/// 
+///
 /// fn main() {
 ///    println!("Untildify : {}", untildify::untildify("~/Desktop")); // prints /Users/<user_name>/Desktop
 ///    println!("Untildify : {}", untildify("~/a/b/c/d/e")); // prints "/User/Untildify/a/b/c/d/e"
@@ -23,7 +23,7 @@ pub fn untildify(input_path: &str) -> String {
     return match get_host_dir() {
         Some(path) => {
             let host_dir = path.to_str().unwrap();
-            let re = Regex::new(r"^~([/\w]+)").unwrap();
+            let re = Regex::new(r"^~([/\w.]+)").unwrap();
             match re.captures(input_path) {
                 Some(captures) => {
                     return format!("{}{}", host_dir, &captures[1]);
@@ -70,5 +70,15 @@ mod tests {
         assert_eq!(untildify(""), "");
         assert_eq!(untildify("/"), "/");
         assert_eq!(untildify("~/Desktop/~/Code"), "/User/Untildify/Desktop/");
+    }
+
+    #[test]
+    fn test_with_dot_folders() {
+        env::remove_var("HOME");
+
+        let home = Path::new("/User/Untildify");
+        env::set_var("HOME", home.as_os_str());
+
+        assert_eq!(untildify("~/.ssh/id_rsa"), "/User/Untildify/.ssh/id_rsa");
     }
 }
