@@ -20,7 +20,7 @@ pub fn untildify(input_path: &str) -> String {
     if input_path.is_empty() {
         return String::from(input_path);
     }
-    return match get_host_dir() {
+    return match home::home_dir() {
         Some(path) => {
             let host_dir = path.to_str().unwrap();
             let re = Regex::new(r"^~([/\w.]+)").unwrap();
@@ -33,12 +33,6 @@ pub fn untildify(input_path: &str) -> String {
         }
         None => String::from(input_path),
     };
-}
-
-#[cfg(any(unix, target_os = "redox"))]
-fn get_host_dir() -> Option<PathBuf> {
-    #[allow(deprecated)]
-    env::home_dir()
 }
 
 #[cfg(test)]
